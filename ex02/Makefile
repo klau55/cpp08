@@ -54,23 +54,6 @@ test: $(NAME)
 
 .PHONY: all clean fclean re test
 
-# Additional debug and release targets
-debug: CXXFLAGS += -g -DDEBUG
-debug: $(NAME)
-
-release: CXXFLAGS += -O2 -DNDEBUG
-release: $(NAME)
-
-# Performance test with time measurement
-perf: $(NAME)
-	@echo "$(MAGENTA)Running performance tests...$(RESET)"
-	@time ./$(NAME)
-
-# Valgrind memory check
-valgrind: $(NAME)
-	@echo "$(MAGENTA)Running valgrind memory check...$(RESET)"
-	@valgrind --leak-check=full --show-leak-kinds=all ./$(NAME)
-
 # Help target
 help:
 	@echo "$(BLUE)Available targets:$(RESET)"
@@ -79,8 +62,4 @@ help:
 	@echo "  $(GREEN)fclean$(RESET)   - Remove all generated files"
 	@echo "  $(GREEN)re$(RESET)       - Clean and rebuild"
 	@echo "  $(GREEN)test$(RESET)     - Build and run tests"
-	@echo "  $(GREEN)debug$(RESET)    - Build with debug flags"
-	@echo "  $(GREEN)release$(RESET)  - Build with optimization flags"
-	@echo "  $(GREEN)perf$(RESET)     - Run performance tests"
-	@echo "  $(GREEN)valgrind$(RESET) - Run valgrind memory check"
 	@echo "  $(GREEN)help$(RESET)     - Show this help message"

@@ -55,12 +55,6 @@ test: $(NAME)
 
 .PHONY: all clean fclean re test
 
-# Additional debug and release targets
-debug: CXXFLAGS += -g -DDEBUG
-debug: $(NAME)
-
-release: CXXFLAGS += -O2 -DNDEBUG
-release: $(NAME)
 
 # Help target
 help:
@@ -70,6 +64,4 @@ help:
 	@echo "  $(GREEN)fclean$(RESET)  - Remove all generated files"
 	@echo "  $(GREEN)re$(RESET)      - Clean and rebuild"
 	@echo "  $(GREEN)test$(RESET)    - Build and run tests"
-	@echo "  $(GREEN)debug$(RESET)   - Build with debug flags"
-	@echo "  $(GREEN)release$(RESET) - Build with optimization flags"
 	@echo "  $(GREEN)help$(RESET)    - Show this help message"
